@@ -7,12 +7,11 @@ class: CommandLineTool
 requirements:
   - class: InlineJavascriptRequirement
 
-# CHANGE THIS
 hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/snv_germline_eh:VERSION
 
-baseCommand: [/ExpansionHunter-v4.0.2-linux_x86_64/bin/ExpansionHunter]
+baseCommand: [/ExpansionHunter-v5.0.0-linux_x86_64/bin/ExpansionHunter]
 
 inputs:
   - id: input_bam
@@ -36,20 +35,32 @@ inputs:
     type: File
     inputBinding:
       prefix: --variant-catalog
-    doc: 
+    doc: variant catalog with STR to use as json file
 
   - id: output_prefix
     type: string
-    default: 'EH'
+    default: 'output'
     inputBinding:
       prefix: --output-prefix
-    doc: 
+
+  - id: nthreads
+    type: int
+    default: 16
+    inputBinding:
+      prefix: --threads
+    doc: number of threads to use
+
 
 outputs:
   - id: vcf
     type: File
     outputBinding:
       glob: $(inputs.output_prefix + ".vcf")
+
+  - id: json
+    type: File
+    outputBinding:
+      glob: $(inputs.output_prefix + ".json")
 
 doc: |
   run ExpansionHunter
