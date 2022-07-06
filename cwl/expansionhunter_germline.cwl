@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: ACCOUNT/snv_germline_eh:VERSION
+    dockerPull: ACCOUNT/expansionhunter_germline:VERSION
 
 baseCommand: [/ExpansionHunter-v5.0.0-linux_x86_64/bin/ExpansionHunter]
 
