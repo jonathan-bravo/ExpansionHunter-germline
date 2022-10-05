@@ -1,0 +1,74 @@
+## Pipeline information #####################################
+#     General information for the pipeline
+#############################################################
+name: expansionhunter_germline
+description: Run ExpansionHunter algorithm to detect Short Tandem Repeats expansion in germline data.
+
+## General arguments ########################################
+#     Pipeline input, reference files, and general arguments
+#       define all arguments for the pipeline here
+#############################################################
+input:
+
+  input_bams:
+    argument_type: file.bam
+    dimensionality: 1
+
+  reference_fa:
+    argument_type: file.fa
+    files:
+      - complete-reference-fasta@hg38
+
+  variant_catalog:
+    argument_type: file.json
+    files:
+      - str-variant-catalog@hg38
+
+## Workflows and dependencies ###############################
+#     Information for the workflows and their dependencies
+#############################################################
+workflows:
+
+  ## Workflow definition #####################
+  #   expansionhunter_germline
+  ############################################
+  expansionhunter_germline:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      input_bam:
+        argument_type: file.bam
+        source_argument_name: input_bams
+        scatter: 1
+
+      reference:
+        argument_type: file.fa
+        source_argument_name: reference_fa
+
+      variant_catalog:
+        argument_type: file.json
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      repeats_vcf:
+        file_type: ExpansionHunter vcf
+        description: output of ExpansionHunter algorithm in vcf format
+
+      repeats_json:
+        file_type: ExpansionHunter json
+        description: output of ExpansionHunter algorithm in json format
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+        instance_type: m5.4xlarge
+        ebs_size: 2x
+        EBS_optimized: True
+        spot_instance: True
+        run_name: run_expansionhunter_germline
+        behavior_on_capacity_limit: wait_and_retry
