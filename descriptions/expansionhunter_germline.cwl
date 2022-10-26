@@ -52,15 +52,15 @@ inputs:
 
 
 outputs:
-  - id: vcf
+  - id: repeats_vcf
     type: File
     outputBinding:
       glob: $(inputs.output_prefix + ".vcf")
 
-  - id: json
+  - id: repeats_json
     type: File
     outputBinding:
       glob: $(inputs.output_prefix + ".json")
 
 doc: |
-  run ExpansionHunter
+  run ExpansionHunter for germline data

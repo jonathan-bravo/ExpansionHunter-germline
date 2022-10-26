@@ -1,0 +1,44 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: expansionhunter_germline
+description: Run ExpansionHunter algorithm to detect Short Tandem Repeats expansion. |
+             Implementation to run on germline data.
+
+runner:
+  language: cwl
+  main: expansionhunter_germline.cwl
+
+software:
+  - ExpansionHunter@v5.0.0
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_bam:
+    argument_type: file.bam
+
+  reference:
+    argument_type: file.fa
+
+  variant_catalog:
+    argument_type: file.json
+
+  # Parameter argument
+  nthreads:
+    argument_type: parameter.integer
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  repeats_vcf:
+    argument_type: file.vcf
+
+  repeats_json:
+    argument_type: file.json

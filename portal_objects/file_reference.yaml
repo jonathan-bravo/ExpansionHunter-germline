@@ -1,0 +1,11 @@
+################################################################
+# Short Tandem Repeats (STR) variant catalog
+################################################################
+name: str-variant-catalog
+description: Short Tandem Repeats (STR) variant catalog. |
+             Build hg38/GRCh38.
+format: json
+version: hg38
+# Required to enable sync with a reference bucket
+uuid: b9890a57-0936-4c60-8a5a-dbf9c29b8834
+accession: GAPMAFA3ED1Z
