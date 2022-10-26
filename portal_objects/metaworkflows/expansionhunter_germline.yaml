@@ -56,12 +56,12 @@ workflows:
     output:
 
       repeats_vcf:
-        file_type: ExpansionHunter vcf
-        description: output of ExpansionHunter algorithm in vcf format
+        file_type: ExpansionHunter VCF
+        description: output of ExpansionHunter algorithm in VCF format
 
       repeats_json:
-        file_type: ExpansionHunter json
-        description: output of ExpansionHunter algorithm in json format
+        file_type: ExpansionHunter JSON
+        description: output of ExpansionHunter algorithm in JSON format
 
     ## EC2 Configuration to use ########
     ####################################
