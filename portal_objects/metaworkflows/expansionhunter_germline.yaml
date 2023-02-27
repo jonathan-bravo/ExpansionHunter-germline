@@ -66,9 +66,18 @@ workflows:
     ## EC2 Configuration to use ########
     ####################################
     config:
-        instance_type: m5.4xlarge
-        ebs_size: 2x
-        EBS_optimized: True
-        spot_instance: True
-        run_name: run_expansionhunter_germline
-        behavior_on_capacity_limit: wait_and_retry
+      instance_type:
+        - c5a.4xlarge
+        - c5.4xlarge
+        - c5n.4xlarge
+        - m5.4xlarge
+        - m5a.4xlarge
+        - c6i.4xlarge
+        - c6a.4xlarge
+        - m6i.4xlarge
+        - m6a.4xlarge
+      ebs_size: 2x
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_expansionhunter_germline
+      behavior_on_capacity_limit: wait_and_retry
